@@ -1,0 +1,57 @@
+<!-- views/add-product.ejs and it is used for the adding of the new product if you
+want to -->
+
+<h1 class="mt-5 mb-4">Update Product</h1>
+<!-- Bootstrap taken error messages for the ejs file if there is an error anyway -->
+<%if(errorMessage){%>
+<div class="alert alert-danger" role="alert"><%=errorMessage%></div>
+<%}%>
+<form action="/update-product" method="post">
+  <!-- I want the id to be hidden(this line below is added later during updating the products) -->
+  <input
+    type="hidden"
+    class="form-control"
+    id="id"
+    name="id"
+    value="<%= products.id %>"
+  />
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Product Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      name="name"
+      value="<%= products.name %>"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="desc" class="form-label">Product Description</label>
+    <textarea class="form-control" id="desc" name="desc" rows="3">
+<%=products.desc %></textarea
+    >
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input
+      type="number"
+      class="form-control"
+      id="price"
+      name="price"
+      step="0.01"
+      value="<%= products.price %>"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="imageUrl" class="form-label">Image URL</label>
+    <input
+      type="text"
+      class="form-control"
+      id="imageUrl"
+      name="imageUrl"
+      value="<%= products.imageUrl %>"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Update Product</button>
+</form>
